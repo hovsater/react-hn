@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import StoryList from './components/StoryList'
+
 const getStory = async (id) => {
   const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
   const story = response.json()
@@ -24,18 +26,7 @@ class TopStories extends React.Component {
   }
 
   render () {
-    return (
-      <ol>
-        {this.state.stories.map(story => {
-          return (
-            <li key={story.id}>
-              <h3>{story.title}</h3>
-              <span>by {story.by} {story.time} with {story.descendants} comments</span>
-            </li>
-          )
-        })}
-      </ol>
-    )
+    return <StoryList stories={this.state.stories} />
   }
 }
 
