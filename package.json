@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "webpack serve"
+    "start": "webpack serve",
+    "check": "standard --fix && eslint --fix ."
   },
   "keywords": [],
   "author": "",
