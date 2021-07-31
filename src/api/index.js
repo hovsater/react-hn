@@ -10,7 +10,8 @@ export const getUser = async (id) => {
 export const getUserStories = async (user) => {
   const stories = await Promise.all(user.submitted.map(id => getStory(id)))
 
-  return stories.filter(story => story.type !== 'comment')
+  return stories
+    .filter(story => !story.deleted && story.type !== 'comment')
 }
 
 export const getStory = async (id) => {
