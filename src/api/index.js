@@ -7,6 +7,12 @@ export const getUser = async (id) => {
   return user
 }
 
+export const getUserStories = async (user) => {
+  const stories = await Promise.all(user.submitted.map(id => getStory(id)))
+
+  return stories.filter(story => story.type !== 'comment')
+}
+
 export const getStory = async (id) => {
   const response = await fetch(`${BASE_URL}/item/${id}.json`)
   const story = await response.json()

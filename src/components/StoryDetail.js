@@ -6,17 +6,17 @@ import StoryHeader from './StoryHeader'
 import StoryMeta from './StoryMeta'
 
 class StoryDetail extends React.Component {
-  state = {
-    story: null,
-    comments: []
-  }
-
   static propTypes = {
     match: PropTypes.shape({
       params: PropTypes.shape({
         id: PropTypes.string.isRequired
       }).isRequired
     }).isRequired
+  }
+
+  state = {
+    story: null,
+    comments: []
   }
 
   async componentDidMount () {
