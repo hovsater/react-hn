@@ -7,7 +7,10 @@ import { timeSince, pluralize } from '../utils'
 const StoryMeta = ({ story }) => {
   return (
     <p>
-      {story.score} points by {story.by} {timeSince(story.time)}
+      {('score' in story)
+        ? `${story.score} points `
+        : null}
+      by {story.by} {timeSince(story.time)}
       {('descendants' in story)
         ? (
           <>
@@ -27,7 +30,7 @@ StoryMeta.propTypes = {
     by: PropTypes.string.isRequired,
     descendants: PropTypes.number,
     id: PropTypes.number.isRequired,
-    score: PropTypes.number.isRequired,
+    score: PropTypes.number,
     time: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired
   }).isRequired

@@ -7,6 +7,12 @@ export const getStory = async (id) => {
   return story
 }
 
+export const getStoryComments = async (story) => {
+  const comments = await Promise.all(story.kids.map(id => getStory(id)))
+
+  return comments
+}
+
 export const getTopStories = async () => {
   const response = await fetch(`${BASE_URL}/topstories.json`)
   const storyIds = await response.json()
