@@ -2,29 +2,18 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import { getTopStories } from './api'
-import StoryList from './components/StoryList'
 import StoryDetail from './components/StoryDetail'
-
-class TopStories extends React.Component {
-  state = {
-    stories: []
-  }
-
-  componentDidMount () {
-    getTopStories().then(stories => this.setState({ stories }))
-  }
-
-  render () {
-    return <StoryList stories={this.state.stories} />
-  }
-}
+import StoryNav from './components/StoryNav'
+import TopStories from './components/TopStories'
+import NewStories from './components/NewStories'
 
 const App = () => {
   return (
     <Router>
+      <StoryNav />
       <Switch>
         <Route exact path='/' component={TopStories} />
+        <Route exact path='/new' component={NewStories} />
         <Route path='/post/:id' component={StoryDetail} />
       </Switch>
     </Router>

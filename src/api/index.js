@@ -14,3 +14,11 @@ export const getTopStories = async () => {
 
   return stories
 }
+
+export const getNewStories = async () => {
+  const response = await fetch(`${BASE_URL}/newstories.json`)
+  const storyIds = await response.json()
+  const stories = await Promise.all(storyIds.slice(0, 30).map(id => getStory(id)))
+
+  return stories
+}

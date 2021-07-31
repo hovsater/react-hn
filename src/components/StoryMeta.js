@@ -8,12 +8,12 @@ const StoryMeta = ({ story }) => {
   return (
     <p>
       {story.score} points by {story.by} {timeSince(story.time)}
-      {story.descendants
+      {('descendants' in story)
         ? (
           <>
             {' with '}
             <Link to={`/post/${story.id}`}>
-              {story.descendants} {pluralize(story.descendants, 'comment', 'comments')}
+              {pluralize(story.descendants, 'comments', 'comment', 'discuss')}
             </Link>
           </>
           )
