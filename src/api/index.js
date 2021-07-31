@@ -1,8 +1,15 @@
 const BASE_URL = 'https://hacker-news.firebaseio.com/v0'
 
+export const getUser = async (id) => {
+  const response = await fetch(`${BASE_URL}/user/${id}.json`)
+  const user = await response.json()
+
+  return user
+}
+
 export const getStory = async (id) => {
   const response = await fetch(`${BASE_URL}/item/${id}.json`)
-  const story = response.json()
+  const story = await response.json()
 
   return story
 }

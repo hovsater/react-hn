@@ -6,6 +6,7 @@ import StoryDetail from './components/StoryDetail'
 import StoryNav from './components/StoryNav'
 import TopStories from './components/TopStories'
 import NewStories from './components/NewStories'
+import UserProfile from './components/UserProfile'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route exact path='/' component={TopStories} />
         <Route exact path='/new' component={NewStories} />
         <Route path='/post/:id' component={StoryDetail} />
+        <Route path='/user/:id' component={UserProfile} />
       </Switch>
     </Router>
   )

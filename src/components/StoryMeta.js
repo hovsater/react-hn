@@ -10,7 +10,9 @@ const StoryMeta = ({ story }) => {
       {('score' in story)
         ? `${story.score} points `
         : null}
-      by {story.by} {timeSince(story.time)}
+      {'by '}
+      <Link to={`/user/${story.by}`}>{story.by}</Link>
+      {` ${timeSince(story.time)}`}
       {('descendants' in story)
         ? (
           <>
